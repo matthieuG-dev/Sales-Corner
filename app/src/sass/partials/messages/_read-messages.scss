@@ -1,0 +1,79 @@
+h3, h4, p {
+    margin: 0;
+    padding: 0;
+}
+.list {
+    background-color: #f8f8f8;
+
+    &__container {
+        // margin-top: 20vw;
+    }
+
+    &__cards {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-start;
+        align-items: center;
+        border-bottom: 1px solid #e7e7e7;
+        padding: 1.5vw 0;
+
+        @media screen and (min-width: 680px) {
+            padding: 0.8vw 0;
+        }
+
+        @media screen and (min-width: 1000px) {
+            padding: 0.2vw 0;
+        }
+
+
+        &:hover {
+            background-color: rgba(44, 125, 247, 0.548);
+            color: #fff;
+        }
+
+        &-sender {
+            width: 30vw;
+            margin: 0 2vw 0 4vw;
+            font-size: 4vw;
+            overflow: hidden;
+            
+            @media screen and (min-width: 680px) {
+                font-size: 1.2vw;
+                width: 15vw;
+                margin: 0 2vw 0 4vw;
+            }
+        }
+
+        &-title {
+            display: none;
+            overflow: hidden;
+
+            @media screen and (min-width: 680px) {
+                display: flex;
+                width: 8vw;
+                margin-right: 2vw;
+
+            }
+        }
+
+        &-content {
+            width: 30vw;
+            font-size: 3.6vw;
+            margin: 0 2vw;
+            overflow: hidden;
+
+            @media screen and (min-width: 680px) {
+            width: 56vw;
+            font-size: 1.2vw;
+            }
+        }
+
+        &-date {
+            font-size: 3.6vw;
+            margin-left: 2vw;
+            @media screen and (min-width: 680px) {
+                font-size: 1.2vw;
+            }
+        }
+    }
+}

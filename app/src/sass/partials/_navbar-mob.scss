@@ -1,0 +1,44 @@
+@import 'src/sass/styles/general.scss';
+
+.navmob {
+            
+@media screen and (min-width: 680px) {
+    display: none;
+}    
+
+    &__container {
+        position: fixed;
+        background-color: #003F6F;
+        width: 100vw;
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: space-between;
+        font-size: 10vw;
+        width: 100%; 
+        padding: 8px 0;       
+        color: #f9f9f9;
+
+        &-item {
+          margin-left: 5vw;
+        }
+
+        &--out {
+          margin-right: 5vw;
+        }
+    }
+
+    &__menu {
+        // display: none;
+        display: flex;
+        flex-flow: column wrap;
+
+        &-item {
+            font-size: 20px;
+            margin: 2vw 0;
+            color: #f9f9f9;
+            text-transform: uppercase;
+        }
+    }
+}

@@ -1,0 +1,253 @@
+@import '../vars/fonts';
+
+.auth {
+  background: rgba(16, 48, 68, 0.863) url('../../assets/city.jpg') right no-repeat;
+  background-blend-mode: darken;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+
+
+    @media screen and (min-width: 1000px){
+      display: flex;
+      background: initial;
+      background-color: #f1f1f1;
+    }
+
+    &__desk-container {
+      @media screen and (min-width: 1000px) and (max-width: 1300px) {
+        width: 80vw;
+        height: 80vh;
+        background-color: #fff;
+        margin: auto;
+        display: flex;
+        -webkit-box-shadow: 0px 0px 26px 6px rgba(219,219,219,1);
+        -moz-box-shadow: 0px 0px 26px 6px rgba(219,219,219,1);
+        box-shadow: 0px 0px 26px 6px rgba(219,219,219,1);
+      }
+
+      @media screen and (min-width: 1300px) {
+        width: 60vw;
+        height: 70vh;
+        background-color: #fff;
+        margin: auto;
+        display: flex;
+        -webkit-box-shadow: 0px 0px 26px 6px rgba(219,219,219,1);
+        -moz-box-shadow: 0px 0px 26px 6px rgba(219,219,219,1);
+        box-shadow: 0px 0px 26px 6px rgba(219,219,219,1);
+      }
+    }
+
+  &__header {
+    width: 100%;
+    height: 40vh;
+    text-align: center;
+
+    @media screen and (min-width: 1000px) and (max-width: 1300px) {
+      width: 50%;
+      height: 100%;
+      background: rgba(16, 48, 68, 0.863) url('../../assets/city.jpg') right no-repeat;
+      background-blend-mode: darken;
+      background-size: cover;
+    }
+
+    @media screen and (min-width: 1300px) {
+      width: 50%;
+      height: 100%;
+      background: rgba(16, 48, 68, 0.863) url('../../assets/city.jpg') right no-repeat;
+      background-blend-mode: darken;
+      background-size: cover;
+    }
+  }
+
+  &__title {
+    font-size: 65px;
+    color: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: $t-header;
+    text-shadow: 2px 2px #042947;
+
+    @media screen and (min-width: 680px) and (max-width: 999px) {
+      font-size: 75px;
+    } 
+  }
+
+  &__container {
+    @media screen and (min-width: 999px){
+      width: 50%;
+    } 
+  }
+  
+  &__menu {
+    display: flex;
+    background-color: transparent;
+    width: 100%;
+    height: 10vh;
+    border-top: 1px solid rgba(255, 255, 255, 0.712);
+
+    @media screen and (min-width: 1000px) and (max-width: 1300px) {
+      width: 100%;
+    }
+    
+    &-item {
+      width: 50vw;
+      border: none;
+      font-size: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.514);
+      background-color: rgba(255, 255, 255, 0.349);
+
+      @media screen and (min-width: 680px) and (max-width: 999px) {
+        font-size: 3vw;
+        width: 50%;
+      } 
+
+      @media screen and (min-width: 1000px){
+        padding-bottom: 20px;
+        margin: 30px;
+        color: #04294773;
+      }
+    }
+  }
+
+  &__block {
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    @media screen and (min-width: 1000px){
+      width: 100%;
+      margin-top: 5vh;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50vh;
+
+    &-title {
+      font-size: 14px;
+    }
+
+    &-input {
+      width: 50vw;
+      padding: 10px 0;
+      border: none;
+      border-bottom: 1px solid #04294773;
+      transition: border-bottom 1s;
+      transition: width 0.75s;
+      position: relative;
+      font-size: 16px;
+      animation-duration: 2s;
+      text-align: center;
+
+      @media screen and (min-width: 680px) and (max-width: 999px) {
+        width: 40%;
+      } 
+
+      @media screen and (min-width: 1000px) and (max-width: 1300px) {
+        width: 50%;
+      }
+      @media screen and (min-width: 1300px) {
+        width: 50%;
+      }
+      &:-webkit-autofill {
+      box-shadow: 0 0 0px 1000px white inset;
+      }
+    
+      &:focus {
+        border-bottom: 2px solid #0d6cb9bb;
+        width: 55vw;
+
+        @media screen and (min-width: 680px) and (max-width: 999px) {
+          width: 50%;
+        } 
+        @media screen and (min-width: 1000px) and (max-width: 1300px) {
+        width: 55%;
+        }
+        @media screen and (min-width: 1300px) {
+          width: 55%;
+        }
+      }
+
+      &::placeholder {
+        font-size: 4vw;
+        @media screen and (min-width: 680px) and (max-width: 999px) {
+          font-size: 2.5vw;
+        } 
+
+        @media screen and (min-width: 1000px){
+        font-size: 16px;
+        }
+      }
+    }
+
+    &-error-message {
+      height: 5vw;
+      color: red;
+      font-size: 24px;
+    }
+
+    &-btn {
+      width: 70vw;
+      background-color: #fff;
+      padding: 10px;
+      border: 2px solid #549dda;
+      color: #549dda;
+      text-transform: uppercase;
+      font-size: 3vw;
+      border-radius: 25px;
+
+      @media screen and (min-width: 680px) and (max-width: 999px) {
+        width: 50vw;
+        font-size: 2vw;
+      }
+
+      @media screen and (min-width: 1000px) and (max-width: 1300px) {
+        width: 60%;
+        font-size: 16px;
+      }
+      @media screen and (min-width: 1300px) {
+        width: 60%;
+        font-size: 16px;
+      }
+
+      &:hover {
+        background-color: #549dda;
+        color: #fff;
+      }
+
+      &:active {
+        background-color: #2d5372;
+        border: 2px solid #2d5372;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.display {
+  background-color: #fff;
+  color: rgba(16, 48, 68, 0.863);
+  @media screen and (min-width: 1000px) and (max-width: 1300px) {
+    border-bottom: 2px solid #549dda;
+  }
+  @media screen and (min-width: 1300px) {
+    border-bottom: 2px solid #549dda;
+
+  }
+}
+
+// .fade-enter-active, .fade-leave-active {
+//   transition: opacity .25s;
+// }
+
+// .fade-enter, .fade-leave-to {
+//   opacity: 0;
+// }
+

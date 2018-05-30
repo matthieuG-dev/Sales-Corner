@@ -1,0 +1,60 @@
+@import '../../sass/styles/_general.scss';
+
+.current {
+    margin-top: 5vw;
+    padding: 0 2vw;
+    @media screen and (min-width: 680px) {
+        margin-top: 3vw;
+    }
+
+
+    &__container {
+        width: 90vw;
+        margin: auto;
+        padding: 2vw;
+        border-bottom: 1px solid #f1f1f1;
+        
+        @media screen and (min-width: 680px) {
+            width: 80vw;
+            padding: 0;
+        }
+    }
+    
+    &__header {
+        display: flex;
+        align-items: baseline;
+        padding: 1vw 0;
+        
+        &-title {
+            font-size: 5vw;
+            font-weight: bold;
+            margin-right: 5vw;
+            @media screen and (min-width: 680px) {
+                font-size: 1.2vw;
+                margin-right: 1vw;
+            }
+        }
+        
+        &-sender {
+            color: #999999;
+            font-size: 4vw;
+            
+            @media screen and (min-width: 680px) {
+                font-size: 1.2vw;
+            }
+        }
+    }
+    
+    &__content {
+        margin-top: 2vw;        
+        padding: 3vw;
+        border: 1px solid #e6e6e6;
+        height: 22vh;
+        overflow-y: scroll;
+        margin-bottom: 4vw;
+
+        @media screen and (min-width: 680px) {
+            padding: 1vw;
+        }
+    }
+}

@@ -1,0 +1,128 @@
+@import '../../vars/fonts';
+
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond|Poppins:300');
+
+.current {
+    padding-top: 100px;
+    width: 100vw;
+    display: flex;
+    flex-flow: column-reverse wrap;
+    
+    @media screen and (min-width: 1100px) {
+        padding-top: 150px;
+        flex-flow: row wrap;
+    }
+
+    &__container {
+        width: 95vw;
+        margin: 0 auto;
+        display: flex;
+        flex-flow: column wrap;
+        
+        @media screen and (min-width: 680px) and (max-width: 1099px) {
+            width: 80vw;
+        }
+        
+        @media screen and (min-width: 1100px) {
+            margin: 0 0 5vw 15vw;
+            width: 700px;
+        
+        }
+    }
+    
+    &__item {
+        background-color: #ffffff;
+        border: 1px solid #f1f1f1;
+        padding: 1vw;
+        margin-bottom: 3vw;
+        -webkit-box-shadow: 0px 5px 14px -6px rgba(194,194,194,1);
+        -moz-box-shadow: 0px 5px 14px -6px rgba(194,194,194,1);
+        box-shadow: 0px 5px 14px -6px rgba(194,194,194,1);
+
+        &-img {
+        margin-bottom: 2vw;
+        width: 100%;
+        height: 80%;
+        }
+
+        &-infos {
+            margin-bottom: 3vw;
+        }
+
+        &-title {
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 1vw;
+            font-family: $t-title;
+            font-weight: bold;
+        }
+
+        &-price {
+            color: rgb(0, 132, 255);
+            font-size: 24px;
+            margin-bottom: 1vw;
+        }
+
+        &-date {
+            font-size: 20px;
+        }
+    }
+
+    &__desc {
+        border-top: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+        padding: 2vw 0;
+        overflow: hidden;
+
+        &-title {
+            font-family: $t-title;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 1vw;
+            font-size: 20px;
+        }
+
+        &-content {
+            font-size: 18px;
+        }
+    }
+
+    &__contact {
+        margin: 0 auto 3vw;
+        border-radius: 3px;
+        background-color: #fff;
+        padding: 1vw;
+        text-align: center;
+        
+        @media screen and (min-width: 1100px) {
+            border: 1px solid #f1f1f1;
+            height: 100px;
+            margin-left: 2vw;
+        }
+
+        &-sender {
+            display: inline-block;
+            margin-bottom: 2vw;
+            color: #003F6F;
+            font-family: $t-title;
+            @media screen and (min-width: 1100px) {
+            display: block;
+            }
+            
+        }
+
+        &-btn {
+            background-color: rgb(0, 162, 255);
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-weight: bold;
+            text-transform: uppercase;
+            @media screen and (min-width: 1100px) {
+                width: 15vw;
+            
+            }
+        }
+    }
+}
