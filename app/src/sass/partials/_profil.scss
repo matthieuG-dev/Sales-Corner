@@ -1,0 +1,65 @@
+input {
+    width: 85vw;
+    padding: 10px;
+    border: 1px solid #c1c1c1;
+    border-radius: 3px;
+    margin-bottom: 40px;
+}
+
+label {
+    align-self: flex-start;
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+}
+
+button {
+    padding: 10px;
+    width: 40vw;
+    background-color: rgb(255, 187, 0);
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 40px;
+}
+.profil {
+    background-color: #fdfdfd;
+    padding-top: 110px;
+    width: 100vw;
+
+    &__header {
+        text-align: center;
+    }
+    
+    &__title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 50px;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media screen and (min-width: 680px) {
+        padding: 15vh 10vw 0;
+        }
+    }
+
+    &__eye-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    &__buttons {
+        width: 100vw;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    &__btn-update {
+        display: inline;
+        width: 60vw;
+    }
+}

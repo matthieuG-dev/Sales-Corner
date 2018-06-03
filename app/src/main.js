@@ -7,11 +7,13 @@ import axios from 'axios'
 import Vuex from 'vuex'
 import store from '@/store/Store'
 import moment from 'moment'
+import VueJWT from 'vuejs-jwt'
 
 Vue.prototype.moment = moment
 
 Vue.config.productionTip = false
 
+Vue.use(VueJWT)
 /* eslint-disable no-new */
 var vm = new Vue({
   el: '#app',

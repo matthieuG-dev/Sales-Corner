@@ -1,18 +1,25 @@
 @import '../../vars/fonts';
 
 input, textarea, select {
-margin: 0 2vw 1vw;
-border: 1px solid #dfdfdf;
-border-radius: 3px;
-padding: 0.5vw;
-outline-color: rgba(0, 174, 255, 0.479);
-font-size: 1vw;
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+    padding: 10px 0;
+    outline-color: rgba(0, 174, 255, 0.479);
+    font-size: 16px;
+    width: 90%;
+    
+    
+    @media screen and (min-width: 680px) {
+        margin: 0 20px 30px;
+        width: 500px
+    }
 }
 
 label {
-    margin: 1vw 2vw 0.8vw;
+    margin: 20px 0 10px 20px;
     font-weight: bold;
     font-size: 16px;
+    align-self: flex-start;
 }
 
 .create {
@@ -22,17 +29,20 @@ label {
     &__header {
 
         &-title {
-        width: 1100px;
-        font-size: 2vw;
-        border-bottom: 2px solid #dfdfdf;
-        margin: 2vw auto;
-        padding-bottom: 1vw;
-        color: #979797;
+            width: 90vw;
+            font-size: 28px;
+            border-bottom: 2px solid #dfdfdf;
+            margin: 20px auto;
+            padding-bottom: 10px;
+            color: #979797;
+            @media screen and (min-width: 1200px) {
+                width: 1100px;
+           
+            }
         }
     }
 
     &__container {
-        width: 1100px;
         display: flex;
         flex-flow: column wrap;
         margin: auto;
@@ -40,47 +50,69 @@ label {
         border-radius: 3px;
         margin-bottom: 10vw;
         background-color: #fff;
+        width: 90vw;
+        justify-content: center;
+        align-items: center;
+
+        @media screen and (min-width: 680px) {
+            align-items: flex-start;
+
+        }
+
+        @media screen and (min-width: 1200px)  {
+            width: 1100px;
+        }
         
         &-title {
             background-color: #636363; 
             color: #fff;
-            padding: 10px 0;
+            padding: 14px 0;
             text-align: center;
             text-transform: uppercase;
             font-family: $t-title;
+            font-size: 20px;
             letter-spacing: 0.3vw;
             font-weight: bold;
+            width: 100%;
         }
     }
     
     &__title {
-        width: 30vw;
+
     }
     
     &__categories {
-        width: 25vw;
         background-color: #dfdfdf;
+        font-size: 14px;
+    }
+
+    &__desc {
+        @media screen and (min-width: 680px) {
+            width: 500px;
+        }
     }
     
     &__price {
         position: relative;
         margin-bottom: 2vw;
+        align-self: flex-start;
 
         &::after {
             content: "€";
-            font-size: 1.8vw;
+            font-size: 28px;
             position: absolute;
-            top: 0.3vw;
-            left: 8vw;
+            top: 6px;
+            left: 110px;
         }
         
         &-input {
-            width: 4vw;
+            width: 80px;
+            align-self: flex-start;
+            margin-left: 10px;
+            @media screen and (min-width: 680px) {
+                margin-left: 20px            
+            }
         }
-    }
-
-    &__desc {
-        width: 60%;
     }
 
     &__btn {

@@ -3,8 +3,11 @@ import Router from 'vue-router'
 
 //import des components
 import Auth from '@/components/auth/Auth'
+import Login from '@/components/auth/Login'
+import Register from '@/components/auth/Register'
 
-import Users from '@/components/Users'
+
+import Profil from '@/components/Profil'
 import Home from '@/components/Home'
 
 import Messages from '@/components/Messages'
@@ -21,12 +24,6 @@ import NewProduct from '@/components/products/NewProduct'
 import CurrentProduct from '@/components/products/CurrentProduct'
 import MyProducts from '@/components/products/MyProducts'
 
-
-
-
-
-// import Navigation from '@/components/Navigation'
-
 Vue.use(Router)
 
 export default new Router({
@@ -35,18 +32,24 @@ export default new Router({
     {
       path:'/',
       name: 'Auth',
-      component: Auth,
+      component: Auth
     },
     {
-      path: '/users',
-      name: 'Users',
-      component: Users
+      path:'/login',
+      name: 'Login',
+      component: Login
+    }, 
+    {
+      path:'/register',
+      name: 'Register',
+      component: Register
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: Home
+      path: '/profil',
+      name: 'Profil',
+      component: Profil
     },
+    //modules messages components routes
     {
       path: '/messages',
       name: 'Messages',
@@ -74,20 +77,22 @@ export default new Router({
         }
       ]
     },
+        //modules products components routes
+
     {
       path: '/products',
       name: 'Products',
       component: Products,
       children: [
         {
-          path: '/products',
-          name: 'ListProducts',
-          component: ListProducts
-        },
-        {
           path: '/products/myProducts',
           name: "MyProducts",
-          component: MyProducts
+          component: MyProducts,
+        },
+        {
+          path: '/products',
+          name: 'ListProducts',
+          component: ListProducts,
         }
       ]
     },

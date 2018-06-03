@@ -15,18 +15,21 @@
                 <option value="" disabled selected>Sélectionner la catégorie</option>
                 <option value="menuiserie">Menuiserie</option>
                 <option value="plomberie">Plomberie</option>
-                <option value="maçonnerie">Maçonnerie</option>
+                <option value="maconnerie">Maçonnerie</option>
                 <option value="jardinerie">Jardinerie</option>
             </select>
             <label class="create__label">Décrivez votre produit :</label>
-            <textarea name="" id="" cols="30" rows="10" class="create__desc" v-model="newProduct.description"></textarea>
+            <textarea class="create__desc" cols="40" rows="10" v-model="newProduct.description"></textarea>
             <label class="create__label">Prix :</label>
             <div class="create__price">
                 <input class="create__price-input" type="text" v-model="newProduct.price">
             </div>
-            <input type="file" name="photo">
+            <!-- <input class="" type="file" name="photo"> -->
             <p class="create__errormessage"> {{ errorMessage }}</p>
-            <button class="create__btn" type="text" @click="createProduct()">Valider</button>
+            <button class="create__btn" type="text" @click="createProduct()" box-action="redirect()">Valider</button>
+            <sweet-modal icon="success" ref="modal" id="tab1">
+	            This is a success!
+            </sweet-modal>
         </div>
 
     </form>
@@ -38,31 +41,32 @@
 import http from '@/http';
 import NavbarDesk from '../navbars/NavbarDesk'
 import NavbarMob from '../navbars/NavbarMob'
+import { SweetModal, SweetModalTab } from 'sweet-modal-vue'
+
 export default {
     name: "NewProduct",
     components: {
         NavbarDesk,
-        NavbarMob
-        
+        NavbarMob,
+        SweetModal,
+        SweetModalTab,
     },
     data() {
         return {
-            newProduct: {
-                title: '',
-                category: '',
-                description:'',
-                price: ''
-            },
+            newProduct: {},
             errorMessage: ''
         }
     },
     methods: {
        createProduct() {
            http.post('/products', this.newProduct).then((res) => {
-               console.log(res.data.content)
+               this.$refs.modal.open('tab1')
            }).catch((err) => {
                 this.errorMessage = err.response.data
             })
+        },
+        redirect () {
+            this.$router.push({path: 'products'})
         }
     }
 }

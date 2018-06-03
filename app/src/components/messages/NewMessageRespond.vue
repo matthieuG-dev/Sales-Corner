@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="new__form">
-            <h2 class="new__form-title">Nouveau message</h2>
+            <h2 class="new__form-title">Envoyer un message à {{ newMessage.receiver }} </h2>
             <input class="new__form-item" type="text" placeholder="title" v-model="newMessage.title">
-            <input class="new__form-item" type="text" placeholder="destinataire" v-model="newMessage.receiver">
+            <!-- <input class="new__form-item" type="text" placeholder="destinataire" v-model="newMessage.receiver"> -->
             <textarea class="new__form-item" rows="6" cols="50" type="text" placeholder="message" v-model="newMessage.content"></textarea>
             <button class="new__form-btn" type="submit" @click="createMessage()">Envoyez</button>
         </div>
@@ -22,9 +22,6 @@ export default {
     data() {
         return {
             newMessage: {
-                title: "",
-                content:"",
-                receiver: ''
             },
             errorMessage: "",
         }
@@ -41,6 +38,9 @@ export default {
                 this.errorMessage = error.response.data;
             })
         }
+    },
+    mounted() {
+        this.newMessage.receiver = this.$route.params.userId
     }
 }
 </script>

@@ -2,7 +2,7 @@
 <div>
     <section class="list">
         <div class="list__container" v-if="load">
-            <div  v-for="product in listOfProducts" :key="product.id">
+            <div  v-for="product in filteredProducts" :key="product.id">
                 <router-link class="list__item" tag="div" :to="{name: 'CurrentProduct', params: {productId: product._id, content: product}}">
                     <img class="list__item-img" src="http://via.placeholder.com/220x180" alt="image">
                     <div class="list__item-infos">
@@ -30,9 +30,11 @@ export default {
     data() {
         return {
             listOfProducts: '',
+            // currentUser: '',
             load: false,
         }
     },
+    props: ['filter'],
     methods: {
         getDate : function (date) {
             return moment(date, 'YYYY-MM-DD').format('DD/MM/YYYY');
@@ -46,6 +48,22 @@ export default {
         .catch((err) => {
             console.log((err))
         })
+    },
+    computed: {
+            filteredProducts () {
+            if (this.filter === 'menuiserie') {
+                return this.listOfProducts.filter(product => product.category === 'menuiserie')
+            } else if (this.filter === 'plomberie') {
+                return this.listOfProducts.filter(product => product.category === 'plomberie')
+            } else if (this.filter === 'maconnerie') {
+                return this.listOfProducts.filter(product => product.category === 'maconnerie')
+            } else if (this.filter === 'jardinerie') {
+                return this.listOfProducts.filter(product => product.category === 'jardinerie')
+            } else {
+                console.log(this.listOfProducts)
+                return this.listOfProducts
+            }
+        }
     }
 }
 </script>

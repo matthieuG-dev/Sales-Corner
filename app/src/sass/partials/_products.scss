@@ -11,16 +11,13 @@
 
 }
 .products {
-    color: blue;
     width: 100vw;
-    padding-top: 12vh;
+    padding-top: 70px;
     border-bottom: 1px solid #e0dfdf;
     background-color: #f1f1f1;
-    // position: fixed;
-    // z-index: 2;
     
     @media screen and (min-width: 676px) {
-        padding-top: 150px;
+        padding-top: 90px;
     }
 
     &__menu {
@@ -28,8 +25,7 @@
         padding-bottom: 15px;
         
         @media screen and (min-width: 676px) {
-            padding-bottom: 30px;
-        
+            padding-bottom: 15px;
         }
 
         &-container {

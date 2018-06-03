@@ -21,7 +21,7 @@
                 </p>
             </div>
         </div>
-        <div class="current__contact">
+        <div class="current__contact" v-show="product.userId !== currentUser">
             <h2 class="current__contact-sender"> {{ product.userId}} </h2>
             <router-link tag="span" :to="{name: 'NewMessageRespond', params: {userId: product.userId, content: product}}">
                 <button class="current__contact-btn">envoyer message</button>
@@ -47,6 +47,7 @@ export default {
     data() {
         return {
             listOfProducts: '',
+            currentUser: '',
             load: false,
         }
     },
@@ -58,7 +59,8 @@ export default {
     beforeCreate() {
         http.get('/products').then((res) => {
             this.listOfProducts = res.data.content;
-            this.load = true;
+            var token = this.$jwt.decode(sessionStorage.token)
+            this.currentUser = token.username                        
         })
         .catch((err) => {
             console.log((err))

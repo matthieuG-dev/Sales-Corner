@@ -15,9 +15,13 @@
           <transition name="fade">
             <ul class="navmob__menu" v-show="success === true">
 							<router-link class="navmob__menu-item" tag="div" to="/products/newProduct" @click="close">Déposer une annonce</router-link>
-              <router-link class="navmob__menu-item" tag="div" to="/users" @click="close">Users</router-link>
-              <router-link class="navmob__menu-item" tag="div" to="/messages" @click="close">Messages</router-link>
-              <router-link class="navmob__menu-item" tag="div" to="/products" @click="close">Products</router-link>
+              <router-link class="navmob__menu-item" tag="div" to="/products" @click="close">Annonces</router-link>
+							<li class="navmob__menu-item" @click="displaySubmenu">Mon compte</li>
+								<ul class="navmob__submenu" v-bind:class="{on: active, off: !active}">
+									<router-link class="navmob__submenu-item" tag="div" to="/profil" @click="close">Mon profil</router-link>
+									<router-link class="navmob__submenu-item" tag="div" to="/products/MyProducts" @click="close">Mes annonces</router-link>
+									<router-link class="navmob__submenu-item" tag="div" to="/messages" @click="close">Messages</router-link>
+							</ul>
             </ul>
           </transition>
 			</div>
@@ -29,15 +33,20 @@
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 import faBars from '@fortawesome/fontawesome-free-solid/faBars'
 import faTimes from '@fortawesome/fontawesome-free-solid/faTimes'
+
 // import faDoorOpen from '@fortawesome/fontawesome-free-solid/faDoorOpen'
 
 
 
 export default {
 	name: "NavbarMob",
+	components: {
+	FontAwesomeIcon
+	},
 	data() {
 		return {
-			success: false
+			success: false,
+			active: false
 		}
 	},
 	methods: {
@@ -46,6 +55,10 @@ export default {
 		},
 		open: function() {
 			this.success = true;
+		},
+		displaySubmenu () {
+			this.active = !this.active;
+
 		}
 	},
 	computed: {
@@ -56,9 +69,6 @@ export default {
 			return faTimes
 		}
   },
-  components: {
-	FontAwesomeIcon
-  }
 }
 </script>
 
@@ -70,4 +80,13 @@ export default {
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+
+ .on {
+ display:block;
+ }
+
+ .off {
+	 display: none;
+ }
+
 </style>

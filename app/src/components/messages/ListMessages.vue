@@ -29,7 +29,7 @@ export default {
     
     name: "ListMessages",
     components: {
-	FontAwesomeIcon
+    FontAwesomeIcon
     },
     data() {
         return {

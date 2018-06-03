@@ -1,15 +1,17 @@
 <template>
 	<div>
-		<form class="auth__form" v-show="selected">
-            <input class="auth__form-input" type="text" required placeholder="email" v-model="user.username">
-            <input class="auth__form-input" type="password" required placeholder="mot de passe" v-model="user.password">
-            <span class="auth__form-error-message">
-                <p> {{ errorMessage}} </p>
-            </span>
-            <!-- pensez a l'affiche des messages d erreurs -->
-
-            <button class="auth__form-btn" @click="login">Se Connecter</button>
-        </form>
+		<transition name="fade">
+			<form class="auth__form">
+				<input class="auth__form-input" placeholder="email" v-model="userRegister.username">
+				<input class="auth__form-input" type="password" placeholder="mot de passe" v-model="userRegister.password">
+				<input class="auth__form-input" type="password" placeholder="confirmer mot de passe" v-model="confirmPassword">
+				<span class="auth__form-error-message">
+					<p> {{ errorPassword}} </p>
+					<p> {{ errorMessage}} </p>
+				</span>
+				<button class="auth__form-btn" @click="register">Créer mon compte</button>
+			</form>
+		</transition>
 	</div>
 </template>
 
@@ -23,34 +25,35 @@ export default {
 	name: "Register",
 	data() {
 		return {
-			user: {},
+			userRegister: {},
+			confirmPassword: '',
 			errorMessage: "",
 			errorPassword: '',
-			selected: true
 		}
 	},
 	methods: {
-		login() {
-			if (!user.password)
-			http.post('auth/login', this.user).then((response)=> {
-				
-				sessionStorage.setItem('token', response.data.token) // store the token in localstorage      
-				this.$router.push({path: 'products'})
-			
-			})
-			.catch((error) => {
-				//traitenement des erreurs
-				this.errorMessage = error.response.data;
-			})
-		}
+		register () {
+      //password confirmation 
+    //    if (!this.confirmPassword) {
+    //     this.errorPassword = 'Confirmez votre mot de passe'
+    //   } else if (this.userRegister.password != this.confirmPassword) {
+	// 			this.errorPassword = 'erreur de confirmation'
+	// 		} else if (this.userRegister.password === this.confirmPassword) {
+	// 			this.errorPassword = null
+	// 		} else {
+				http.post('/auth/signup', this.userRegister).then((response) => {
+					this.$router.push({path: '/'})
+				}) 
+				.catch((error) => {
+					this.errorMessage = error.response.data;
+				})
+			}
+    	// }
 	},
 	computed: {
 	},
 	beforeCreate() {
 		sessionStorage.clear();
-	},
-	beforeDestroy() {
-		location.reload();
 	}
 }
 </script>
