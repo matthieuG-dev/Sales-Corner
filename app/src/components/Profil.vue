@@ -7,8 +7,8 @@
         <div class="profil__header">
           <h2 class="profil__title">Mes informations personnelles</h2>
         </div>
-        <div v-for="user in listUsers" :key="user.username">
-          <form class="profil__container" v-show="user.username === currentUser">
+        <div v-for="user in listUsers" :key="user.username" v-show="user.username === currentUser">
+          <form class="profil__container" >
             <label class="profil__label">Email :</label>
             <input type="text" disabled :placeholder="currentUser">
 
@@ -16,22 +16,20 @@
             <label class="profil__label" v-if="!active">Nouveau mot de passe :</label>
 
             <div class="block">
-            <input :type="type" v-if="active" :disabled="value" :value="password">
-            
-            <input :type="type" v-if="!active" :disabled="value" v-model="newPassword">
-            <font-awesome-icon v-if="!active" class="profil__eye-icon" @click="test" :icon="eye" />
-            </div>
+              <input :type="type" v-if="active" :disabled="value" :value="password">
+              <input :type="type" v-if="!active" :disabled="value" v-model="newPassword">
+              <font-awesome-icon v-if="!active" class="profil__eye-icon" @click="swicthType" :icon="eye"   />
+              <font-awesome-icon v-if="type == 'text'" class="profil__eye-icon" @click="swicthType" :icon="eyeSlash"   />
 
+            </div>
 
             <label class="profil__label" v-if="!active">Confirmer votre mot de passe :</label>
             <input :type="type" v-if="!active" :disabled="value" :value="password" v-model="confirmPassword">
             
             <div class="profil__buttons">
-
               <button class="profil__btn-update" @click="swithDisabledValue" v-if="active" @click.prevent="active = false">Modifier votre mot de passe</button>
               <button @click="cancel" v-if="!active" @click.prevent="active = true">Annuler</button>
               <button @click="updatePassword" v-if="!active" @click.prevent="active = true">Enregistrer</button>
-
             </div>
 
           </form>
@@ -47,6 +45,8 @@ import NavbarMob from './navbars/NavbarMob'
 
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 import faEye from '@fortawesome/fontawesome-free-solid/faEye'
+import faEyeSlash from '@fortawesome/fontawesome-free-solid/faEyeSlash'
+
 
 export default {
   name: 'Profil',
@@ -80,18 +80,33 @@ export default {
       this.value = true
       this.type="password"
     },
-    test () {
+    swicthType () {
       if (this.type === "password") {
         this.type = "text"
       } else {
         this.type = "password"
       }
+    },
+    updatePassword () {
+      if (this.newPassword === this.confirmPassword) {
+
+        http.put('users', this.newPassword).then((res) => {
+          console.log('success:',  true)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      }
     }
   },
   computed: {
     eye () {
-			return faEye
+      return faEye
+      
     },
+    eyeSlash () {
+      return faEyeSlash
+    }
 
   },
   beforeCreate() {

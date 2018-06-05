@@ -4,30 +4,52 @@ input {
     border: 1px solid #c1c1c1;
     border-radius: 3px;
     margin-bottom: 40px;
+
+    @media screen and (min-width: 680px) {
+        width: 500px;
+    }
 }
 
 label {
     align-self: flex-start;
-    margin-left: 20px;
+    margin-left: 40px;
     margin-bottom: 20px;
 
 }
 
 button {
     padding: 10px;
-    width: 40vw;
+    width: 40%;
     background-color: rgb(255, 187, 0);
-    border: none;
+    border: 2px solid rgb(255, 187, 0);
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
     border-radius: 3px;
     margin-bottom: 40px;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #fff;
+        border: 2px solid rgb(255, 187, 0);
+        color: rgb(255, 187, 0);
+    }
 }
 .profil {
     background-color: #fdfdfd;
     padding-top: 110px;
     width: 100vw;
+    @media screen and (min-width: 680px) {
+        width: 600px;
+        margin-left: 100px
+    }    
 
     &__header {
         text-align: center;
+        @media screen and (min-width: 680px) {
+            width: 500px;
+            margin: auto
+        }
     }
     
     &__title {
@@ -42,7 +64,7 @@ button {
         align-items: center;
 
         @media screen and (min-width: 680px) {
-        padding: 15vh 10vw 0;
+            align-items: center;;
         }
     }
 
@@ -56,10 +78,18 @@ button {
         width: 100vw;
         display: flex;
         justify-content: space-evenly;
+
+        @media screen and (min-width: 680px) {
+            align-items: flex-start; 
+            width: 500px;   
+        }
     }
 
     &__btn-update {
-        display: inline;
-        width: 60vw;
+        width: 60%;
+    }
+
+    &__eye-icon {
+        color: #979797;
     }
 }

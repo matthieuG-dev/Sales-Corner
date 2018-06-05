@@ -7,7 +7,7 @@
                     <ul class="products__menu-container">
                         <!-- <input class="products__searchfields" type="search"> -->
                         <select class="products__categories" name="text" placeholder="Sélectionner la catégorie" v-model="categoryValue"> 
-                            <option value="all"  selected>Toutes</option>
+                            <option value="all">Toutes</option>
                             <option value="menuiserie">menuiserie</option>
                             <option value="plomberie">Plomberie</option>
                             <option value="maconnerie">Maçonnerie</option>

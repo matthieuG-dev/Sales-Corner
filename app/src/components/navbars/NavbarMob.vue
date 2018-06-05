@@ -18,7 +18,8 @@
               <router-link class="navmob__menu-item" tag="div" to="/products" @click="close">Annonces</router-link>
 							<li class="navmob__menu-item" @click="displaySubmenu">Mon compte</li>
 								<ul class="navmob__submenu" v-bind:class="{on: active, off: !active}">
-									<router-link class="navmob__submenu-item" tag="div" to="/profil" @click="close">Mon profil</router-link>
+									<router-link class="navmob__submenu-item" tag="div" to="/profil" @click="close">Mes infos</router-link>
+									
 									<router-link class="navmob__submenu-item" tag="div" to="/products/MyProducts" @click="close">Mes annonces</router-link>
 									<router-link class="navmob__submenu-item" tag="div" to="/messages" @click="close">Messages</router-link>
 							</ul>

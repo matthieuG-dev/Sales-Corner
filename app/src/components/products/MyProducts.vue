@@ -3,7 +3,13 @@
     <!-- <Navbar-desk />
     <Navbar-mob /> -->
     <section class="list">
+        <header class="list__header">
+            <h2 class="list__header-title">Vos annonces</h2>
+                        
+            <p class="list__header-counter">{{ counter }} annonces à votre actif</p>
+        </header>
         <div class="list__container" v-if="load">
+
             <div class="list__block"  v-for="product in filteredProducts" :key="product.id">
                 <router-link class="list__item" tag="div" :to="{name: 'CurrentProduct', params: {productId: product._id, content: product}}">
                     <img class="list__item-img" src="http://via.placeholder.com/220x180" alt="image">
@@ -43,7 +49,8 @@ export default {
     data() {
         return {
             listOfProducts: '',
-            load: false
+            load: false,
+            produtsCounter: '',
             }
     },
     props: ['filter'],
@@ -75,10 +82,10 @@ export default {
             } else if (this.filter === 'jardinerie') {
                 return this.listOfProducts.filter(product => product.category === 'jardinerie')
             } else {
-                console.log(this.listOfProducts)
                 return this.listOfProducts
             }
-        }
+        },
+        counter () { return this.listOfProducts.length}    
     },
     beforeCreate() {
         http.get('/products/:userId').then((res) => {

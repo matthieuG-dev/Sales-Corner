@@ -197,7 +197,7 @@ app.get('/users', function (req, res) {
     });
 });
 
-app.put('/users/:id', (req, res) => {
+app.put('/users', (req, res) => {
 
     var currentUser = req.token.username;
     var userId = req.params.userId
@@ -338,17 +338,13 @@ app.post('/products', (req, res) => {
 
     if (!req.body.title) {
         res.status(412).send('You need to provide a title please')
-    } else {
-        if (!req.body.category) {
+    } else if (!req.body.category) {
             res.status(412).send('You need to choose a category')
-        } else {
-            if (!req.body.description) {
+        } else if (!req.body.description) {
                 res.status(412).send('You need to provide a description please')
-            } else {
-                if (!req.body.price) {
+            } else if (!req.body.price) {
                     res.status(412).send('You need to provide a price please')
                 } else {
-
                     newProduct.save((err, newProduct) => {
                         if (err) {
                             console.log(err);
@@ -361,10 +357,7 @@ app.post('/products', (req, res) => {
                         }
                     })
                 }
-            }
-        }
-    }
-})
+            })
 
 app.get('/products', (req, res) => {
 

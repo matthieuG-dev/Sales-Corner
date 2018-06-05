@@ -7,7 +7,7 @@
                     <router-link class="navdesk__menu-item" tag="li" to="/products">Annonces</router-link>
                     <li class="navdesk__menu-item" @click="displaySubmenu">Mon compte</li>
                     <ul class="navdesk__submenu" v-bind:class="{on: active, off: !active}">
-                        <router-link class="navdesk__submenu-item" tag="div" to="/profil">Mon profil</router-link>
+                        <router-link class="navdesk__submenu-item" tag="div" to="/profil">Mes infos</router-link>
                         <router-link class="navdesk__submenu-item" tag="div" to="/products/myProducts">Mes anonces</router-link>
                         <router-link class="navdesk__submenu-item" tag="div" to="/messages">Messages</router-link>
                     </ul>
