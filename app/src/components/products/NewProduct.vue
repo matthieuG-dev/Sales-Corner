@@ -27,10 +27,13 @@
             <!-- <input class="" type="file" name="photo"> -->
             <p class="create__errormessage"> {{ errorMessage }}</p>
             <button class="create__btn" type="text" @click="createProduct()" box-action="redirect()">Valider</button>
+            
+        </div>
+        <button @click="open">
             <sweet-modal icon="success" ref="modal" id="tab1">
 	            This is a success!
             </sweet-modal>
-        </div>
+        </button>
 
     </form>
 
@@ -60,13 +63,16 @@ export default {
     methods: {
        createProduct() {
            http.post('/products', this.newProduct).then((res) => {
-               this.$refs.modal.open('tab1')
+                this.$refs.modal.open() 
            }).catch((err) => {
                 this.errorMessage = err.response.data
             })
         },
         redirect () {
             this.$router.push({path: 'products'})
+        },
+        open () {
+
         }
     }
 }

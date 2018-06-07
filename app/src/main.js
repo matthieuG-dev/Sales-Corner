@@ -8,6 +8,9 @@ import Vuex from 'vuex'
 import store from '@/store/Store'
 import moment from 'moment'
 import VueJWT from 'vuejs-jwt'
+import SweetModal from 'sweet-modal-vue/src/plugin.js'
+
+Vue.use(SweetModal)
 
 Vue.prototype.moment = moment
 

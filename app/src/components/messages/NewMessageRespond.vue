@@ -3,7 +3,6 @@
         <div class="new__form">
             <h2 class="new__form-title">Envoyer un message à {{ newMessage.receiver }} </h2>
             <input class="new__form-item" type="text" placeholder="title" v-model="newMessage.title">
-            <!-- <input class="new__form-item" type="text" placeholder="destinataire" v-model="newMessage.receiver"> -->
             <textarea class="new__form-item" rows="6" cols="50" type="text" placeholder="message" v-model="newMessage.content"></textarea>
             <button class="new__form-btn" type="submit" @click="createMessage()">Envoyez</button>
         </div>

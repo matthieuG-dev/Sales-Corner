@@ -1,28 +1,25 @@
 <template>
     <div>
-       <!-- <div class="list__cards" v-for="message in listOfMessages" :key="message._id"  @click="getMessageId(message._id)" v-if="message.read === true">
-                <h3 class="list__cards-sender"> {{ message.senderId }} </h3> 
-                <h4 class="list__cards-title"> {{ message.title }} </h4>
-                <p class="list__cards-content"> {{ message.content }} </p>
-                <p class="list__cards-date"> {{ message.creationDate }} </p>
-        </div> -->
         <div class="current">
             <section class="current__container" v-for=" message in listOfMessages" :key="message.id" v-if="message._id == $route.params.messageId">
+                {{test(message.title, message.senderId)}}
                 <div class="current__header">
-                    <h2 class="current__header-title"> {{ message.title }} </h2>
-                    <p class="current__header-sender">  {{ message.senderId }} </p>
+                    <p class="current__header-title"> {{ message.title }} </p>
+                    <p class="current__header-sender">message envoyé par {{ message.senderId }} </p>
                 </div>
                 <div class="current__content">
                     <p class="current__content-text"> {{ message.content }} </p>
                 </div>
                 <!-- <input type="text" class="class__receiver" "> -->
             </section>
-            <section class="response">
-                <div class="response__container">
-                </div>
-
-            </section>
         </div>
+            <div class="response">
+                <div class="response__container">
+                <textarea class="response__textarea" rows="7" v-model="responseMessage.content" placeholder="Répondre ici"></textarea>
+                {{errorMessage}}
+                    <button class="response__btn" @click="createMessage">envoyer message</button>
+                </div>
+            </div>
     </div>
 </template>
 
@@ -35,10 +32,28 @@ export default {
     data() {
         return {
             listOfMessages: "",
-        }
+            responseMessage: {},
+            errorMessage: ""
+        }    
     },
     methods: {
-    
+        createMessage() {
+            console.log(this.responseMessage)
+            http.post('/messages', this.responseMessage).then((res) => {
+                alert('votre message a été envoyé')
+                this.$router.push({path: '/messages'});
+            })
+            .catch((error) => {
+                this.errorMessage = error.response.data;
+            })
+        },
+        test (first, second) {
+            this.responseMessage.title = first
+            this.responseMessage.receiver = second
+        },
+        display () {
+            console.log(this.responseMessage)
+        }
     },
     beforeCreate() {
         http.get('/messages')

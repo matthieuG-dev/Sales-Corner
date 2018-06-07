@@ -6,8 +6,9 @@
                 <section class="products__menu">
                     <ul class="products__menu-container">
                         <!-- <input class="products__searchfields" type="search"> -->
+                        <label>Choississez une catégorie:</label>
                         <select class="products__categories" name="text" placeholder="Sélectionner la catégorie" v-model="categoryValue"> 
-                            <option value="all">Toutes</option>
+                            <option value="all" selected="selected">Toutes</option>
                             <option value="menuiserie">menuiserie</option>
                             <option value="plomberie">Plomberie</option>
                             <option value="maconnerie">Maçonnerie</option>
@@ -19,7 +20,7 @@
             </section>
             <!-- AFFICHAGE DE MA LISTE DE COMPONENTS ENFANTS (LIST, READ, NEW) -->
         </div>
-        <router-view :filter="categoryValue"/>
+        <router-view :filter="categoryValue" />
     </div>
 </template>
 <script>
@@ -48,6 +49,9 @@ export default {
         return {
             categoryValue: null
         }
+    },
+    beforeCreated () {
+        this.categoryValue = "selectionner une catégorie"
     }
 }   
 </script>

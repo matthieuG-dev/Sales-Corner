@@ -1,8 +1,7 @@
-const express = require('express');
-var bodyParser = require('body-parser');
-var jwt = require('jsonwebtoken');
-var mongoose = require('mongoose');
-
+import express from 'express'
+import bodyParser from 'body-parser'
+import jwt from 'jsonwebtoken'
+import mongoose from 'mongoose'
 const app = express();
 
 var secretkey = 'motdepassesecret';
@@ -34,7 +33,13 @@ app.use(function (req, res, next) {
     }
 })
 
-//USER SCHEMA
+
+// let router = express.Router()
+
+//ROUTES IMPORT
+    // import users from './routes/users'
+
+// USER SCHEMA
 var userShema = new Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
@@ -46,7 +51,7 @@ var userShema = new Schema({
 
 var User = mongoose.model('User', userShema);
 
-//MESSAGE SCHEMA
+// MESSAGE SCHEMA
 var messageSchema = new Schema({
     title: String,
     content: String,
@@ -177,6 +182,8 @@ app.use(function (req, res, next) {
 });
 
 // USERS GET AND PUT ROUTES
+// router.use('users', users)
+
 app.get('/users', function (req, res) {
 
     var decodedUser = req.token;
@@ -185,8 +192,7 @@ app.get('/users', function (req, res) {
         if (err) {
             console.log(err);
             res.status(500).send('Internal Server Error	');
-        }
-        if (!users) {
+        } else if (!users) {
             res.status(412).send('No users founded!')
         } else {
             res.status(200).send({
@@ -232,15 +238,16 @@ app.post('/messages', function (req, res) {
     newMessage.senderId = decodedUser.username;
     newMessage.receiverId = req.body.receiver;
 
-    if (!req.body.title || !req.body.content) {
-        res.status(412).send('Your message must contain a title and a content')
+    if (!req.body.title) {
+        res.status(412).send('Votre message doit contenir un titre')
+    } else if (!req.body.content) {
+        res.status(412).send('Votre message est vide')
     } else {
         User.findOne({ 'username': req.body.receiver }, function (err, result) {
-
             if (err) {
                 console.log(err);
             } else if (!result) {
-                res.status(412).send("This recipient doesn't exist");
+                res.status(412).send("Ce destinataire n'éxiste pas");
             } else {
                 newMessage.save(function (err, newMessage) {
                     if (err) {
@@ -431,13 +438,10 @@ app.delete('/products/:id', (req, res) => {
 
     Product.remove({ _id: productId, userId: currentUser }, function (err, product) {
         if (err) {
-            console.log(err);
+            res.status(500).send('Error in database')
         } else if (product.n === 0) {
-            console.log(product)
             res.status(412).send('preconditions failed')
         } else {
-            console.log('here')
-            console.log(product)
             res.status(200).send({
                 success: true
             })

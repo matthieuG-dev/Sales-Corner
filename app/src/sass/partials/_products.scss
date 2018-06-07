@@ -35,8 +35,9 @@
             justify-content: space-evenly;
 
             @media screen and (min-width: 676px) {
-                flex-flow: row  nowrap;
-                align_items: center;
+                flex-flow:  column  nowrap;
+                justify-content: flex-start;
+                align-items: center;
             }
         }
     }

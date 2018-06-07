@@ -23,14 +23,11 @@
 import http from '@/http';
 import moment from 'moment';
 
-
-
 export default {
     name: "ListProducts",
     data() {
         return {
             listOfProducts: '',
-            // currentUser: '',
             load: false,
         }
     },
@@ -38,6 +35,13 @@ export default {
     methods: {
         getDate : function (date) {
             return moment(date, 'YYYY-MM-DD').format('DD/MM/YYYY');
+        },
+        //fonction optimisée pour le filtrage des annonces avec pasage de parametres
+        //probleme: le component apparait vide sans annonces !
+        filterProduct (category) {
+            if (this.filter === category) {
+                return this.listOfProducts.filter(product => product.category === category)
+            }
         }
     },	
     beforeCreate() {
@@ -50,7 +54,8 @@ export default {
         })
     },
     computed: {
-            filteredProducts () {
+        //computed retournant liste des annonces filtrée: non optimisée !!!
+        filteredProducts () {
             if (this.filter === 'menuiserie') {
                 return this.listOfProducts.filter(product => product.category === 'menuiserie')
             } else if (this.filter === 'plomberie') {
@@ -60,7 +65,6 @@ export default {
             } else if (this.filter === 'jardinerie') {
                 return this.listOfProducts.filter(product => product.category === 'jardinerie')
             } else {
-                console.log(this.listOfProducts)
                 return this.listOfProducts
             }
         }

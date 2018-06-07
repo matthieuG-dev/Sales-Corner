@@ -12,8 +12,12 @@ input {
 
 label {
     align-self: flex-start;
-    margin-left: 40px;
+    margin-left: 20px;
     margin-bottom: 20px;
+    @media screen and (min-width: 680px) {
+        margin-left: 40px;
+
+    }
 
 }
 
@@ -40,8 +44,9 @@ button {
     padding-top: 110px;
     width: 100vw;
     @media screen and (min-width: 680px) {
+        padding-top: 200px;
         width: 600px;
-        margin-left: 100px
+        margin-left: 75px;
     }    
 
     &__header {
