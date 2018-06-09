@@ -7,11 +7,12 @@ const app = express();
 var secretkey = 'motdepassesecret';
 
 mongoose.connect('mongodb://localhost/users');
-var Schema = mongoose.Schema;
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+var Schema = mongoose.Schema;
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -203,7 +204,7 @@ app.get('/users', function (req, res) {
     });
 });
 
-app.put('/users', (req, res) => {
+app.put('/profil    ', (req, res) => {
 
     var currentUser = req.token.username;
     var userId = req.params.userId
